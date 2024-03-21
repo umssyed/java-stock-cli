@@ -6,28 +6,64 @@ import java.io.IOException;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.google.gson.*;
 
 
 public class AppUtils {
 
-    // Check for dates
+    // Check for if any date provided is larger than the current date (in future)
+    public static void checkDateValidity(String start_date, String end_date) {
+        // Check if start date is in correct yyyy-mm-dd format
+        boolean sd_isValidFormat = isValidDateFormat(start_date);
+        boolean ed_isValidFormat = isValidDateFormat(end_date);
 
-    public static String formatDate(String inputDate) {
-        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        if (!sd_isValidFormat || !ed_isValidFormat) {
+            System.err.println("Incorrect date format. Date format should be in yyyy-mm-dd.");
+            System.err.println("Use --help for more information.");
+            System.exit(0);
+        }
+
         DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String formattedDate = "";
         try {
             // Parse the date string into a LocalDate
-            LocalDate date = LocalDate.parse(inputDate, inputFormatter);
-            // Format the LocalDate to the desired string format
-            formattedDate = date.format(outputFormatter);
+            LocalDate sd = LocalDate.parse(start_date, outputFormatter);
+            LocalDate ed = LocalDate.parse(end_date, outputFormatter);
+
+            if (sd.isAfter(ed)) {
+                System.err.println("Start date is after end date.");
+                System.err.println("Use --help for more information.");
+                System.exit(0);
+            }
+
+            if (sd.isAfter(LocalDate.now()) || ed.isAfter(LocalDate.now())) {
+                System.err.println("One of the dates provided is in the future. Please provide a date before today's date of " + LocalDate.now());
+                System.err.println("Use --help for more information.");
+                System.exit(0);
+            }
         } catch (DateTimeException e) {
-            System.err.println("Invalid date provided. Using current date to retrieve the stock price. Use --help for more information.");
-            formattedDate = getYesterdaysDate();
+            System.err.println("Invalid date provided. Use --help for more information.");
+            System.exit(0);
         }
-        return formattedDate;
+
+        LocalDate yesterdayDate = LocalDate.now().minusDays(1);
+
+    }
+
+    public static boolean isValidDateFormat(String inputDate) {
+        // Define the regex pattern for the format yyyy-MM-dd
+        String pattern = "\\d{4}-\\d{2}-\\d{2}";
+
+        // Compile the regex pattern
+        Pattern regex = Pattern.compile(pattern);
+
+        // Create a matcher with the input date
+        Matcher matcher = regex.matcher(inputDate);
+
+        // Return true if the input date matches the pattern, false otherwise
+        return matcher.matches();
     }
 
     public static String getYesterdaysDate() {
@@ -99,6 +135,10 @@ public class AppUtils {
         }
 
 
+    }
+
+    public void printHelp() {
+        System.err.println("Use --help for more information.");
     }
 
 }

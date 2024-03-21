@@ -50,8 +50,10 @@ public class FinanceClient {
             return response.toString();
 
         } else {
-            System.out.println("GET Request Failed.");
-            return "GET Request Failed.";
+            System.err.println("Error getting stock information. Please ensure the correct stock ticker is provided.");
+            System.err.println("Use --help for more information.");
+            System.exit(0);
+            return "";
         }
     }
 
