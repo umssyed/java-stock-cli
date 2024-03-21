@@ -66,6 +66,9 @@ public class App implements Runnable {
                 end_date = AppUtils.getYesterdaysDate();
             }
 
+            // Check if provided dates are valid
+            AppUtils.checkDateValidity(start_date, end_date);
+
             if (!percentageChange) {
                 parsedArgs = new ParsedArguments(symbol, start_date, end_date);
             } else {
@@ -79,35 +82,10 @@ public class App implements Runnable {
             }
         }
 
-        //System.out.println("Your stock symbol: " + symbol);
-        //System.out.println("Start Date: " + start_date);
-        //System.out.println("End Date: " + end_date);
-        //System.out.println("Percentage Change: " + percentageChange);
-
     }
 
     public static void main(String[] args) {
         CommandLine.run(new App(), args);
     }
 }
-
-/**
- if (args.length >= 2) {
- ParsedArguments parsedArguments = AppUtils.parseArgs(args);
- symbol = parsedArguments.symbol;
- date1 = parsedArguments.date1;
- date2 = parsedArguments.date2;
- comparePrice = parsedArguments.comparePrice;
- //System.out.println("Stock symbol: " + symbol + ", Date1: " + date1 + ", Date 2: " + date2 + ", Compare Price: " + comparePrice);
-
- FinanceClient stockData = new FinanceClient(symbol);
- String respJSON = stockData.getResponseJSON();
-
- String stockPrice = AppUtils.getPrice(respJSON, date1);
- System.out.println("The price of " + symbol + " on date " + date1 + ": " + stockPrice);
-
- } else {
- System.out.println("!You need to provide arguments. -help or -h for more information");
- }
- * */
 
