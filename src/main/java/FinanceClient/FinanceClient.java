@@ -2,27 +2,26 @@ package FinanceClient;
 
 //import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.*;
+import java.util.Properties;
+import config.ReadPropertyFile;
 
 public class FinanceClient {
     private String symbol;
     private String fullURL;
     private static String ResponseJSON;
+    private static String API_KEY = "";
 
-    //private static final String API_KEY = "8Y8X5REKLY8I7QKE";
-    private static final String API_KEY = "65fc0932e1bde2.60235549";
-
-    //private static final String baseURL = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=";
     private static final String baseURL = "https://eodhd.com/api/eod/";
     public FinanceClient(String symbol, String start_date, String end_date) throws IOException {
         this.symbol = symbol;
-        //https://eodhd.com/api/eod/MCD.US?from=2020-01-05&to=2020-02-10&period=d&api_token=65fc0932e1bde2.60235549&fmt=json
+
+        ReadPropertyFile pf = new ReadPropertyFile();
+        API_KEY = pf.getAPI();
+
         fullURL = baseURL + symbol + ".US?from=" + start_date + "&to=" + end_date + "&period=d&api_token=" + API_KEY + "&fmt=json";
-        //fullURL = baseURL + this.symbol + "&outputsize=compact&apikey=" + API_KEY;
         ResponseJSON = getStockData(fullURL);
     }
 

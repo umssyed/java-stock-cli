@@ -20,26 +20,36 @@ import picocli.CommandLine.Option;
 
 @Command(name="stockcli",
         version="1.0.0",
-        header="Sample Command",
+        header="%n========================== STOCK CLI ==========================",
         mixinStandardHelpOptions = true,
         requiredOptionMarker = '*',
-        optionListHeading = "%nOptions are%n",
-        description = "This is a stock CLI to get real-time information on stock prices.",
-        footerHeading = "%nCopyright",
-        footer="%nDeveloped by Uzair Syed")
+        optionListHeading = "Options for arguments are:%n",
+        description = "%nThis is a stock CLI to get real-time information on stock prices.%n" +
+                "The CLI enables user to provide one stock ticker to get the latest stock price.%n" +
+                "There is an option to see the price or percentage change in the stock price between two dates.%n" +
+                "%nSample command 1 - Return the latest stock price of NVDA:" +
+                "%nstock-cli -s NVDA" +
+                "%nSample command 2 - Return the change in price/percentage between two dates:" +
+                "%nstock-cli -s MSFT -sd 2024-02-10 -ed 2024-02-19 %n" +
+                "===============================================================%n",
+        footerHeading = "%n===============================================================%n",
+        footer="Copyright" +
+                "Developed by Uzair Syed %n" +
+                "Github: https://github.com/umssyed %n" +
+                "===============================================================")
 public class App implements Runnable {
-    @Option(names={"-s"}, description = "Stock Symbol", required = true)
+    @Option(names={"-s"}, description = "Stock symbol/ticker (Required)", required = true)
     private static String symbol;
 
-    @Option(names={"-sd"}, description = "Start Date Format:yyyy-mm-dd", paramLabel = "Start Date")
+    @Option(names={"-sd"}, description = "Stock price start date. Format: yyyy-mm-dd")
     private static String start_date;
 
-    @Option(names={"-ed"}, description = "End Date Format:yyyy-mm-dd", paramLabel = "End Date")
+    @Option(names={"-ed"}, description = "Stock price end date. Format: yyyy-mm-dd")
     private static String end_date;
 
-    @Option(names={"-%"}, description = "Percentage change")
+    @Option(names={"-p"}, description = "Use if you want to see a percentage change")
     private static boolean percentageChange;
-    @Option(names={"-h", "--help"}, description = "Show Help", usageHelp = true)
+    @Option(names={"-h", "--help"}, description = "Show help message", usageHelp = true)
     private static boolean help;
 
     @Override
