@@ -12,6 +12,8 @@ import com.google.gson.*;
 
 public class AppUtils {
 
+    // Check for dates
+
     public static String formatDate(String inputDate) {
         DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
