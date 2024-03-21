@@ -5,7 +5,15 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+
 public class AppUtils {
+    // -s AAPL MSFT -% date1 date2
+    // -s AAPL MSFT
     // Get Stock Price:
     //      1. -s AAPL: this will get stock price of AAPL on current date
     //      2. -s AAPL <date>: this will get stock price of AAPL on requested <date>
@@ -124,6 +132,32 @@ public class AppUtils {
         DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String formattedDate = currentDate.format(outputFormatter);
         return formattedDate;
+    }
+
+    public static String getPrice(String json, String date) {
+        String stockPrice = "";
+
+        JsonElement element = JsonParser.parseString(json);
+        JsonObject jsonObject = element.getAsJsonObject();
+
+        JsonObject timeSeriesDaily = jsonObject.getAsJsonObject("Time Series (Daily)");
+
+        if (timeSeriesDaily != null && timeSeriesDaily.has(date)) {
+            JsonObject dayData = timeSeriesDaily.getAsJsonObject(date);
+            String closeValue = dayData.get("4. close").getAsString();
+            stockPrice = closeValue;
+        }
+
+
+
+        //JSONObject jsonObj = new JSONObject(json);
+        //JSONObject timeSeriesObj = jsonObj.getJSONObject("Time Series (Daily)");
+        //System.out.println("Date Requested: " + date);
+        //JSONObject stockDateObj = timeSeriesObj.getJSONObject(date);
+
+        //stockPrice = stockDateObj.getString("4. close");
+        System.out.println("Returnging..");
+        return stockPrice;
     }
 
 }
