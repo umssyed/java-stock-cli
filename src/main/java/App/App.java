@@ -20,7 +20,7 @@ import picocli.CommandLine.Option;
 
 @Command(name="stockcli",
         version="1.0.0",
-        header="%n========================== STOCK CLI ==========================",
+        header="%n                       --- STOCK CLI ---                        ",
         mixinStandardHelpOptions = true,
         requiredOptionMarker = '*',
         optionListHeading = "Options for arguments are:%n",
@@ -28,13 +28,12 @@ import picocli.CommandLine.Option;
                 "The CLI enables user to provide one stock ticker to get the latest stock price.%n" +
                 "There is an option to see the price or percentage change in the stock price between two dates.%n" +
                 "%nSample command 1 - Return the latest stock price of NVDA:" +
-                "%nstock-cli -s NVDA" +
+                "%nstock-cli -s NVDA%n" +
                 "%nSample command 2 - Return the change in price/percentage between two dates:" +
                 "%nstock-cli -s MSFT -sd 2024-02-10 -ed 2024-02-19 %n" +
                 "===============================================================%n",
-        footerHeading = "%n===============================================================%n",
-        footer="Copyright" +
-                "Developed by Uzair Syed %n" +
+        footerHeading = "%n                          ---**---                              %n",
+        footer= "Developed by Uzair Syed %n" +
                 "Github: https://github.com/umssyed %n" +
                 "===============================================================")
 public class App implements Runnable {

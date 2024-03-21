@@ -87,12 +87,12 @@ public class AppUtils {
         // Get the "close" value from the JsonObject
         double closePrice = stockData.get("close").getAsDouble();
 
-        System.out.println("\n================== STOCK CLI - LATEST VALUE ===================");
+        System.out.println("\n================== STOCK CLI - LATEST VALUE ===================\n");
         System.out.println("Stock: " + symbol);
         System.out.printf("Most Current Trading Date: %s, Closing Price: $%.2f %n", date, closePrice);
 
-        System.out.println("\n===============================================================");
-        System.out.println("Copyright\nDeveloped by Uzair Syed");
+        System.out.println("\n\n\n                          ---**---                              ");
+        System.out.println("Developed by Uzair Syed");
         System.out.println("Github: https://github.com/umssyed");
         System.out.println("===============================================================");
 
@@ -117,7 +117,7 @@ public class AppUtils {
 
         // Print Data
         double changeInValue = ed_closePrice - sd_closePrice;
-        System.out.println("\n==================== STOCK CLI - PRICE CHANGE =================");
+        System.out.println("\n==================== STOCK CLI - PRICE CHANGE =================\n");
         System.out.println("Stock: " + symbol);
         //System.out.println("From: " + start_date + ", Closing Price: $" + sd_closePrice);
         System.out.printf("From: %s, Closing Price: $%.2f %n", start_date, sd_closePrice);
@@ -139,8 +139,8 @@ public class AppUtils {
             System.out.println("%");
         }
 
-        System.out.println("\n===============================================================");
-        System.out.println("Copyright\nDeveloped by Uzair Syed");
+        System.out.println("\n\n\n                          ---**---                              ");
+        System.out.println("Developed by Uzair Syed");
         System.out.println("Github: https://github.com/umssyed");
         System.out.println("===============================================================");
 
