@@ -112,5 +112,5 @@ You should see the output:
 ![Help Message from the above command line](src/main/resources/help.png)
 
 ## License <a name = "license"></a>
-The project is licensed under the MIT license. View the [License File](License.md) for details.
+The project is licensed under the MIT license. View the [License File](LICENSE) for details.
 
