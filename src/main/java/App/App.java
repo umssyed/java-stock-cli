@@ -22,7 +22,7 @@ import picocli.CommandLine.Option;
  * The @Command uses picocli.CommandLine.Command package to generate
  * description and other useful information in the cli
  */
-@Command(name="stockcli",
+@Command(name="stock-cli",
         version="1.0.0",
         header="%n                       --- STOCK CLI ---                        ",
         mixinStandardHelpOptions = true,
