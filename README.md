@@ -77,10 +77,6 @@ The stock-cli project requires you to have a Finance API from eodhd.com. Below a
 4. You will receive a free API key. See below instructions on how to configure the API Key in the project file
 5. The free API key has a limit of 20 API calls per day. Each call will consume 1 API limit. See your eodhd.com dashboard for more information.
 
-
-This project requires a MySQL database and a YouTube API key. Optionally, you can also set up a Dropbox
-API key which is very useful when you use Heroku to deploy the bot.
-
 ## Project Setup <a name = "project_setup"></a>
 This section goes through configuring your API key, and building the project.
 
