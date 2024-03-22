@@ -1,11 +1,8 @@
 package FinanceClient;
 
-//import org.json.JSONObject;
-
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.*;
-import java.util.Properties;
 import config.ReadPropertyFile;
 
 public class FinanceClient {
@@ -42,10 +39,6 @@ public class FinanceClient {
                 response.append(line);
             }
             reader.close();
-
-            //System.out.println(response);
-            //System.out.println("\n");
-
             return response.toString();
 
         } else {

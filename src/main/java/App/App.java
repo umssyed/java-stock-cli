@@ -2,21 +2,12 @@ package App;
 
 import Holder.ParsedArguments;
 import util.AppUtils;
-import FinanceClient.FinanceClient;
-
 import java.io.IOException;
-
-import java.time.DateTimeException;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-// IMPLEMENTING PICOCLI
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
-
-// Stock Price
-// -s AAPL dd/mm/yyyy
 
 @Command(name="stockcli",
         version="1.0.0",

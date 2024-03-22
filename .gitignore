@@ -38,4 +38,3 @@ build/
 ### Mac OS ###
 .DS_Store
 /src/main/java/config/config.properties
-/src/main/java/config/ReadPropertyFile.java
