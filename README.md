@@ -18,7 +18,6 @@ The application utilized eodhd.com finance API.
     + [Create the configuration file](#configs)
 + [Run Application](#run_app)
 + [License](#license)
-+ [Acknowledgments](#acknowledgments)
 
 ## About <a name = "about"></a>
 A command line interface for easily getting the latest stock price. This application also enables you to get the change in stock price and percentage between two dates.
@@ -113,5 +112,5 @@ You should see the output:
 ![Help Message from the above command line](src/main/resources/help.png)
 
 ## License <a name = "license"></a>
+The project is licensed under the MIT license. View the [License File](License.md) for details.
 
-## Acknowledgements <a name = "acknowledgements"></a>
