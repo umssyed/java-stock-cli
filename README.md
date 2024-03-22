@@ -1,5 +1,9 @@
 # Command Line Interface for Stock Price information
-A Java CLI for getting stock information
+A Java CLI for getting stock information.
+This is a Command Line Interface application which generates up-to-date stock information 
+The application utilized eodhd.com finance API.
+
+![Sample Screenshot of stock-cli](src/main/resources/sample.png)
 
 ## Table of Contents
 + [About](#about)
@@ -34,31 +38,31 @@ Option arguments:
 #### Example Usage in CMD: <a name = "example_usage"></a>
 ##### 1. Sample Command 1 - Return the latest stock price of NVidia (NVDA):
 ```cmd
-$ C\Users> stock-cli -s NVDA
+$ C\Users\stock-cli> stock-cli -s NVDA
 ```
 
 
 ##### 2. Sample Command 2 - Return the change in price between two dates:
 ```cmd
-$ C\Users> stock-cli -s MSFT -sd 2024-02-10 -ed 2024-02-19
+$ C\Users\stock-cli> stock-cli -s MSFT -sd 2024-02-10 -ed 2024-02-19
 ```
 
 
 ##### 3. Sample Command 3 - Display the change in percentage between the two dates also:
 ```cmd
-$ C\Users> stock-cli -s MSFT -sd 2024-02-10 -ed 2024-02-19 -p
+$ C\Users\stock-cli> stock-cli -s MSFT -sd 2024-02-10 -ed 2024-02-19 -p
 ```
 
 
 ##### 4. Sample Command 4 - Display the change in price and percentage from a starting date to current date
 ```cmd
-$ C\Users> stock-cli -s AAPL -sd 2024-02-10 -p
+$ C\Users\stock-cli> stock-cli -s AAPL -sd 2024-02-10 -p
 ```
 
 
 ##### 5. Sample Command 5 - Show help
 ```cmd
-$ C\Users> stock-cli -h
+$ C\Users\stock-cli> stock-cli -h
 ```
 
       
@@ -106,6 +110,7 @@ Go to your command prompt and run the following:
 $ C\Users> stock-cli -h
 ```
 You should see the output:
+![Help Message from the above command line](src/main/resources/help.png)
 
 ## License <a name = "license"></a>
 
