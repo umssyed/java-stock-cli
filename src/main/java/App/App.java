@@ -1,14 +1,27 @@
-package App;
+/**
+ * This is a Command Line Interface application which generates up-to-date stock information
+ * The application utilized eodhd.com finance API.
+ * Check https://eodhd.com/financial-apis/ for the finance api documentation
+ *
+ * Author: Uzair Syed
+ * Date Published: 2024-03-22
+ * Version: 1.0.0
+ */
 
+package App;
 import Holder.ParsedArguments;
 import util.AppUtils;
 import java.io.IOException;
-import java.time.format.DateTimeFormatter;
-
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
+
+/**
+ * This is the main running App for stock-cli
+ * The @Command uses picocli.CommandLine.Command package to generate
+ * description and other useful information in the cli
+ */
 @Command(name="stockcli",
         version="1.0.0",
         header="%n                       --- STOCK CLI ---                        ",
@@ -42,17 +55,21 @@ public class App implements Runnable {
     @Option(names={"-h", "--help"}, description = "Show help message", usageHelp = true)
     private static boolean help;
 
+    /**
+     * The run method uses the Parsed Arguments AppUtils for logic related to
+     * calling the Finance API.
+     */
     @Override
     public void run() {
-        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         ParsedArguments parsedArgs;
 
         // If neither start or end dates are provided, provide yesterday's date stock pricing.
         if (start_date == null && end_date == null) {
-            double yesterdayStockPrice = 0;
-            start_date = AppUtils.getYesterdaysDate();
-            parsedArgs = new ParsedArguments(symbol, start_date);
+            start_date = AppUtils.getYesterdaysDate(); // Get the yesterday's date for stock pricing
+            parsedArgs = new ParsedArguments(symbol, start_date); // Set the ParsedArguments object
             try {
+                // Call AppUtils to generate the stock price for a single stock when
+                // user does not provide a start date and end date
                 AppUtils.getSingleStockPrice(parsedArgs);
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -60,30 +77,31 @@ public class App implements Runnable {
         }
         // If both start and end dates are provided, then we perform a comparison
         else {
-
             // If start date is provided but no end date. Make end date yesterday's date
             if (start_date != null && end_date == null) {
                 end_date = AppUtils.getYesterdaysDate();
             }
-
-            // Check if provided dates are valid
+            // Check if provided dates are valid and in the correct format. Use AppUtils.
             AppUtils.checkDateValidity(start_date, end_date);
-
+            // If percentage change is requested by user, set the Parsed Arguments object variable to true
             if (!percentageChange) {
                 parsedArgs = new ParsedArguments(symbol, start_date, end_date);
             } else {
                 parsedArgs = new ParsedArguments(symbol, start_date, end_date, true);
             }
-
             try {
+                // Call AppUtils to generate stock information
                 AppUtils.compareStockPrice(parsedArgs);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
-
     }
 
+    /**
+     * Main method for App
+     * @param args
+     */
     public static void main(String[] args) {
         CommandLine.run(new App(), args);
     }
