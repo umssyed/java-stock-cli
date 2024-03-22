@@ -2,8 +2,8 @@
 A Java CLI for getting stock information.
 This is a Command Line Interface application which generates up-to-date stock information 
 The application utilized eodhd.com finance API.
-![Sample Screenshot of stock-cli](src/main/resources/sample.png)
 
+<p></p>
 <div style="text-align:center">
   <img src="src/main/resources/sample.png"/>
 </div>
