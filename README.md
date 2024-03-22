@@ -3,10 +3,7 @@ A Java CLI for getting stock information.
 This is a Command Line Interface application which generates up-to-date stock information 
 The application utilized eodhd.com finance API.
 
-<p></p>
-<div style="text-align:center">
-  <img src="src/main/resources/sample.png"/>
-</div>
+![Help Message from the above command line](src/main/resources/sample.png)
 
 
 ## Table of Contents
