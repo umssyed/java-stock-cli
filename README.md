@@ -24,7 +24,7 @@ The application utilized eodhd.com finance API.
 A command line interface for easily getting the latest stock price. This application also enables you to get the change in stock price and percentage between two dates.
 
 ### Usage: <a name = "usage"></a>
-Usage: ```stockcli [-hp] [-ed=<end_date>] -s=<symbol> [-sd=<start_date>]```
+Usage: ```stock-cli [-hp] [-ed=<end_date>] -s=<symbol> [-sd=<start_date>]```
 
 Option arguments:
 ```java
